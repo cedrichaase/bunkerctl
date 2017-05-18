@@ -1,3 +1,20 @@
-<p>
-  light works!
-</p>
+<div class="row">
+  <h1>Led strip control</h1>
+</div>
+
+<hr/>
+<div class="row" style="margin-top: 1em;">
+  <h2>Color</h2>
+
+  <span [(colorPicker)]="selectedColor"
+        style="font-size: 3em;"
+        (colorPickerChange)="switchColor()"
+        [cpToggle]="true"
+        [cpAlphaChannel]="'disabled'"
+        [cpOutputFormat]="'hex'"
+        [cpDialogDisplay]="'inline'"
+        [cpPosition]="'bottom'"
+        [style.color]="selectedColor"
+        [cpPositionOffset]="'50%'"
+        [cpPositionRelativeToArrow]="true"></span>
+</div>

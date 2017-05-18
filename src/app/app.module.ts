@@ -8,6 +8,7 @@ import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { LightComponent } from './view/light/light.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ColorPickerModule} from 'angular2-color-picker';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
