@@ -10,12 +10,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ColorPickerModule} from 'angular2-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
+import { PiweatherComponent } from './view/piweather/piweather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LightComponent
+    LightComponent,
+    PiweatherComponent
   ],
   imports: [
     BrowserModule,

@@ -3,18 +3,18 @@
 </div>
 
 <hr/>
-<div class="row" style="margin-top: 1em;">
-  <h2>Color</h2>
+<div *ngFor="let device of devices" class="row" style="margin-top: 1em;">
+  <h2>Color for {{ device }}</h2>
 
-  <span [(colorPicker)]="selectedColor"
-        style="font-size: 3em;"
-        (colorPickerChange)="switchColor()"
+  <span [(colorPicker)]="selectedColor[device]"
+        style="font-size: 3em; height: 2em;"
+        (colorPickerChange)="switchColor(device)"
         [cpToggle]="true"
         [cpAlphaChannel]="'disabled'"
         [cpOutputFormat]="'hex'"
         [cpDialogDisplay]="'inline'"
         [cpPosition]="'bottom'"
-        [style.color]="selectedColor"
+        [style.color]="selectedColor[device]"
         [cpPositionOffset]="'50%'"
         [cpPositionRelativeToArrow]="true"></span>
 </div>

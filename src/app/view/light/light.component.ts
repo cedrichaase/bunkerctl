@@ -7,15 +7,28 @@ import {RgbService} from '../../service/rgb/rgb.service';
   templateUrl: './light.component.html',
   styleUrls: ['./light.component.css']
 })
-export class LightComponent {
-  color = '#fc0';
-  selectedColor = '#fc0';
+export class LightComponent implements OnInit {
+  color = {};
+  selectedColor = {};
+  devices: string[];
 
   constructor(private rgb: RgbService) { }
 
-  switchColor() {
+  ngOnInit(): void {
+    this.rgb.getDevices()
+      .subscribe(devices => {
+        this.devices = devices;
+
+        for (const device of devices) {
+          this.color[device] = '#fc0';
+          this.selectedColor[device] = '#fc0';
+        }
+      });
+  }
+
+  switchColor(device: string) {
     console.log('color changed');
-    this.color = this.selectedColor;
-    this.rgb.setColor(this.color);
+    this.color[device] = this.selectedColor[device];
+    this.rgb.setColor(device, this.color[device]);
   }
 }
