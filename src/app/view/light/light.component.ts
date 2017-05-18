@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as io from 'socket.io-client';
+import {RgbService} from '../../service/rgb/rgb.service';
 
 @Component({
   moduleId: module.id,
@@ -7,22 +7,15 @@ import * as io from 'socket.io-client';
   templateUrl: './light.component.html',
   styleUrls: ['./light.component.css']
 })
-export class LightComponent implements OnInit {
+export class LightComponent {
   color = '#fc0';
   selectedColor = '#fc0';
 
-  private url = 'http://localhost:3000';
-  private socket;
-
-  constructor() { }
-
-  ngOnInit() {
-    this.socket = io(this.url);
-  }
+  constructor(private rgb: RgbService) { }
 
   switchColor() {
     console.log('color changed');
     this.color = this.selectedColor;
-    this.socket.emit('set-color', this.color.replace('#', ''));
+    this.rgb.setColor(this.color);
   }
 }

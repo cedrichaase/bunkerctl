@@ -9,6 +9,7 @@ import { LightComponent } from './view/light/light.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ColorPickerModule} from 'angular2-color-picker';
+import {RgbService} from './service/rgb/rgb.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {ColorPickerModule} from 'angular2-color-picker';
     NgbModule.forRoot(),
     ColorPickerModule
   ],
-  providers: [],
+  providers: [
+    RgbService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
