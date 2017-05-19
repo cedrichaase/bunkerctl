@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Device, RgbService} from '../../service/rgb/rgb.service';
+import async from 'async';
 
 const defaultColor = '#fc0';
 
@@ -11,11 +12,15 @@ const defaultColor = '#fc0';
 })
 export class LightComponent implements OnInit {
   devices: Device[];
-  code = 'setColor("f00"); setTimeout\(\(\) \=\> \{setColor\("0f0"\);\}, 500)\;';
-  language = 'javascript';
+  code = `
+    setColor("bett", "fc0");
+    wait(1000);
+    setColor("bett", "0cf");
+    wait(1000);
+  `;
   codeLoop;
-
   isAmbilightActive = false;
+  loadCoadeClicked: boolean;
 
   constructor(private rgb: RgbService) { }
 
@@ -44,6 +49,38 @@ export class LightComponent implements OnInit {
 
     const setColor = (color) => this.rgb.setColor('bett', color);
     eval(this.code);
+  }
+
+  loadCode() {
+    let tasks = [];
+
+    const setColor = (id, color) => {
+      tasks.push(cb => {
+        this.rgb.setColor(id, color);
+        cb(null, true);
+      });
+    };
+
+    const wait = (millis) => {
+      tasks.push(cb => {
+        setTimeout(() => {
+          cb(null, true);
+        }, millis);
+      });
+    };
+
+    eval(this.code);
+
+    this.loadCoadeClicked = false;
+    async.whilst(
+      () => !this.loadCoadeClicked,
+      (callback) => {
+        async.series(tasks, (error, results) => {
+          callback(null);
+        });
+      },
+      (error) => { /* nop */ }
+    );
   }
 
   private onAmbilightChanged() {

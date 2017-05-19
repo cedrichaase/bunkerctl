@@ -27,13 +27,13 @@
 </div>
 
 <div class="row">
-  <monaco-editor [(ngModel)]="code" [language]="language" ></monaco-editor>
+  <button (click)="loadCode()">Load</button>
 </div>
-
 <div class="row">
-  <h3>Ambilight</h3>
-</div>
-
-<div class="row">
-  <button (click)="toggleAmbilight()">Toggle ambilight</button>
+  <div ace-editor
+   [(text)]="code"
+  [mode]="'javascript'"
+  [readOnly]="false"
+  [autoUpdateContent]="true"
+  style="font-size: 13pt; min-height: 400px; width:100%; overflow: auto;"></div>
 </div>

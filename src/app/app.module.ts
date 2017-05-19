@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { MonacoEditorComponent } from 'ng2-monaco-editor';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { LightComponent } from './view/light/light.component';
@@ -12,6 +11,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ColorPickerModule} from 'angular2-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
 import { PiweatherComponent } from './view/piweather/piweather.component';
+import { AceEditorDirective } from 'ng2-ace-editor';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { PiweatherComponent } from './view/piweather/piweather.component';
     DashboardComponent,
     LightComponent,
     PiweatherComponent,
-    MonacoEditorComponent
+    AceEditorDirective
   ],
   imports: [
     BrowserModule,
