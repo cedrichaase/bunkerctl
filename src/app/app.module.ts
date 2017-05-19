@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { MonacoEditorComponent } from 'ng2-monaco-editor';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
 import { LightComponent } from './view/light/light.component';
@@ -17,7 +18,8 @@ import { PiweatherComponent } from './view/piweather/piweather.component';
     AppComponent,
     DashboardComponent,
     LightComponent,
-    PiweatherComponent
+    PiweatherComponent,
+    MonacoEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RgbService} from '../../service/rgb/rgb.service';
+import {Device, RgbService} from '../../service/rgb/rgb.service';
+
+const defaultColor = '#fc0';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +10,12 @@ import {RgbService} from '../../service/rgb/rgb.service';
   styleUrls: ['./light.component.css']
 })
 export class LightComponent implements OnInit {
-  color = {};
-  selectedColor = {};
-  devices: string[];
+  devices: Device[];
+  code = 'setColor("f00"); setTimeout\(\(\) \=\> \{setColor\("0f0"\);\}, 500)\;';
+  language = 'javascript';
+  codeLoop;
+
+  isAmbilightActive = false;
 
   constructor(private rgb: RgbService) { }
 
@@ -18,17 +23,33 @@ export class LightComponent implements OnInit {
     this.rgb.getDevices()
       .subscribe(devices => {
         this.devices = devices;
-
-        for (const device of devices) {
-          this.color[device] = '#fc0';
-          this.selectedColor[device] = '#fc0';
-        }
       });
   }
 
-  switchColor(device: string) {
-    console.log('color changed');
-    this.color[device] = this.selectedColor[device];
-    this.rgb.setColor(device, this.color[device]);
+  switchColor(deviceId: string) {
+    const device = this.devices.find(dev => dev.id === deviceId);
+    console.log(`color changed: device: ${deviceId}`);
+    this.rgb.setColor(deviceId, device.color);
+  }
+
+  toggleAmbilight() {
+    this.isAmbilightActive = !this.isAmbilightActive;
+    this.onAmbilightChanged();
+  }
+
+  executeCode() {
+    if (!!this.codeLoop) {
+      clearInterval(this.codeLoop);
+    }
+
+    const setColor = (color) => this.rgb.setColor('bett', color);
+    eval(this.code);
+  }
+
+  private onAmbilightChanged() {
+    const isActive = this.isAmbilightActive;
+    console.log(`Ambilight is active: ${isActive}`);
+
+    // TODO
   }
 }

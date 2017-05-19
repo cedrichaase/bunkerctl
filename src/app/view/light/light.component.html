@@ -3,18 +3,37 @@
 </div>
 
 <hr/>
-<div *ngFor="let device of devices" class="row" style="margin-top: 1em;">
-  <h2>Color for {{ device }}</h2>
 
-  <span [(colorPicker)]="selectedColor[device]"
-        style="font-size: 3em; height: 2em;"
-        (colorPickerChange)="switchColor(device)"
-        [cpToggle]="true"
-        [cpAlphaChannel]="'disabled'"
-        [cpOutputFormat]="'hex'"
-        [cpDialogDisplay]="'inline'"
-        [cpPosition]="'bottom'"
-        [style.color]="selectedColor[device]"
-        [cpPositionOffset]="'50%'"
-        [cpPositionRelativeToArrow]="true"></span>
+<div *ngIf="!isAmbilightActive">
+  <div class="row">
+    <h3>Static color control</h3>
+  </div>
+  <div *ngFor="let device of devices" class="form-group row" style="margin-top: 1em;">
+    <label for="{{ device.id }}" class="col-2 col-form-label">{{ device.description }}</label>
+
+    <div class="col-8">
+      <input  class="form-control"
+              id="{{ device.id }}"
+              [(colorPicker)]="device.color"
+              [style.background]="device.color"
+              [value]="device.color"
+              (colorPickerChange)="switchColor(device.id)"/>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Dynamic color control</h3>
+</div>
+
+<div class="row">
+  <monaco-editor [(ngModel)]="code" [language]="language" ></monaco-editor>
+</div>
+
+<div class="row">
+  <h3>Ambilight</h3>
+</div>
+
+<div class="row">
+  <button (click)="toggleAmbilight()">Toggle ambilight</button>
 </div>

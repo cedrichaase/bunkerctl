@@ -5,6 +5,12 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+export interface Device {
+  id: string;
+  description: string;
+  color: string;
+}
+
 @Injectable()
 export class RgbService {
   private url = 'http://localhost:3000';
@@ -18,7 +24,7 @@ export class RgbService {
   /**
    * @returns {Observable<string[]>}
    */
-  public getDevices(): Observable<string[]> {
+  public getDevices(): Observable<Device[]> {
     const url = `${this.url}/devices`;
 
     return this.http.get(url)
@@ -29,16 +35,24 @@ export class RgbService {
   /**
    * Sends the given color to a device
    *
-   * @param device
+   * @param deviceId
    * @param color
    */
-  public setColor(device: string, color: string): void {
+  public setColor(deviceId: string, color: string): void {
     const data = {
-      device: device,
+      device: deviceId,
       color: color.replace('#', '')
     };
 
     this.socket.emit('set-color', data);
+  }
+
+  public getColor(deviceId: string): Observable<string> {
+    const url = `${this.url}/color/${deviceId}`;
+
+    return this.http.get(url)
+      .map((res: Response) => res.text())
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
