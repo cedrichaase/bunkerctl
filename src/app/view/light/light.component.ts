@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Device, RgbService} from '../../service/rgb/rgb.service';
-import async from 'async';
+import {RgbRealtimeService} from '../../service/rgb-realtime/rgb-realtime.service';
 
 const defaultColor = '#fc0';
 
@@ -12,17 +12,11 @@ const defaultColor = '#fc0';
 })
 export class LightComponent implements OnInit {
   devices: Device[];
+  programs: string[];
+  dynamic = true;
+  private activeProgram: string;
 
-  isAmbilightActive = false;
-
-  code = `setColor("bett", "fc0");
-wait(1000);
-setColor("bett", "0cf");
-wait(1000);`;
-
-  private codeLoop = (next) => { setTimeout(() => { return next(); }, 1000); };
-
-  constructor(private rgb: RgbService) { }
+  constructor(private rgb: RgbService, private rgbRealtime: RgbRealtimeService) { }
 
   ngOnInit(): void {
     this.rgb.getDevices()
@@ -30,14 +24,15 @@ wait(1000);`;
         this.devices = devices;
       });
 
-    async.forever(
-      next => {
-        this.codeLoop(next);
-      },
-      error => {
-        console.log('code loop stopped');
-      }
-    );
+    this.rgbRealtime.getPrograms()
+      .subscribe(programs => {
+        this.programs = programs;
+      });
+
+    this.rgbRealtime.getActiveProgram()
+      .subscribe(activeProgram => {
+        this.activeProgram = activeProgram;
+      });
   }
 
   switchColor(deviceId: string) {
@@ -46,43 +41,20 @@ wait(1000);`;
     this.rgb.setColor(deviceId, device.color);
   }
 
-  toggleAmbilight() {
-    this.isAmbilightActive = !this.isAmbilightActive;
-    this.onAmbilightChanged();
-  }
-
-  loadCode() {
-    this.codeLoop = next => {
-      let tasks = [];
-
-      const setColor = (id, color) => {
-        tasks.push(cb => {
-          this.rgb.setColor(id, color);
-          cb(null, true);
-        });
-      };
-
-      const wait = (millis) => {
-        tasks.push(cb => {
-          setTimeout(() => {
-            cb(null, true);
-          }, millis);
-        });
-      };
-
-      eval(this.code);
-
-      async.series(tasks, (error, results) => {
-        return next();
+  changeProgram(newProgram) {
+    this.rgbRealtime.setActiveProgram(newProgram)
+      .subscribe(program => {
+        console.log(`set program to ${program}`);
       });
-
-    };
   }
 
-  private onAmbilightChanged() {
-    const isActive = this.isAmbilightActive;
-    console.log(`Ambilight is active: ${isActive}`);
+  toggleDynamic() {
+    this.dynamic = !this.dynamic;
 
-    // TODO
+    if (!this.dynamic) {
+      this.changeProgram('');
+    } else {
+      this.changeProgram(this.activeProgram);
+    }
   }
 }

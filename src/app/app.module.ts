@@ -12,6 +12,7 @@ import {ColorPickerModule} from 'angular2-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
 import { PiweatherComponent } from './view/piweather/piweather.component';
 import { AceEditorDirective } from 'ng2-ace-editor';
+import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AceEditorDirective } from 'ng2-ace-editor';
     ColorPickerModule
   ],
   providers: [
-    RgbService
+    RgbService,
+    RgbRealtimeService
   ],
   bootstrap: [AppComponent]
 })
