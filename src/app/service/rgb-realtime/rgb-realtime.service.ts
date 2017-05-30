@@ -4,6 +4,11 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+export interface IProgramInfo {
+  name: string;
+  content: string;
+}
+
 @Injectable()
 export class RgbRealtimeService {
   private url = 'http://localhost:5000';
@@ -35,9 +40,23 @@ export class RgbRealtimeService {
       .map(this.extractData);
   }
 
+  public getProgram(name: string): Observable<IProgramInfo> {
+    const url = `${this.url_mgmt}/program/${name}`;
+
+    return this.http.get(url)
+      .map(this.extractData);
+  }
+
+  public saveProgram(name: string, content: string): Observable<IProgramInfo> {
+    const url = `${this.url_mgmt}/program/${name}`;
+
+    return this.http.put(url, {content: content})
+      .map(this.extractData);
+  }
+
   private extractData(res: Response) {
     const body = res.json();
-    return body || {};
+    return body;
   }
 
   private handleError (error: Response | any) {

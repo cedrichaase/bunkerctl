@@ -11,7 +11,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ColorPickerModule} from 'angular2-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
 import { PiweatherComponent } from './view/piweather/piweather.component';
-import { AceEditorDirective } from 'ng2-ace-editor';
+import { AceEditorDirective, AceEditorComponent } from 'ng2-ace-editor';
+import 'brace';
 import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
 
 

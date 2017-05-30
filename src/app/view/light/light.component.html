@@ -46,13 +46,20 @@
       <option *ngFor="let program of programs">{{ program }}</option>
     </select>
   </div>
+
+  <div class="row">
+    <div ace-editor
+    [(text)]="code"
+    [mode]="'python'"
+    [readOnly]="false"
+    [autoUpdateContent]="true"
+    style="font-size: 13pt; min-height: 550px; width:100%; overflow: auto;"></div>
+  </div>
+
+  <div class="row" style="margin-top: 1em;">
+    <button class="btn btn-primary" (click)="saveProgram()">save</button>
+  </div>
+
 </div>
 
-<!--<div class="row">-->
-  <!--<div ace-editor-->
-   <!--[(text)]="code"-->
-  <!--[mode]="'javascript'"-->
-  <!--[readOnly]="false"-->
-  <!--[autoUpdateContent]="true"-->
-  <!--style="font-size: 13pt; min-height: 400px; width:100%; overflow: auto;"></div>-->
-<!--</div>-->
+
