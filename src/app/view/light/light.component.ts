@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Device, RgbService} from '../../service/rgb/rgb.service';
-import {IProgramInfo, RgbRealtimeService} from '../../service/rgb-realtime/rgb-realtime.service';
+import {RgbRealtimeService} from '../../service/rgb-realtime/rgb-realtime.service';
 import 'brace';
 import 'brace/mode/python';
-
-const defaultColor = '#fc0';
 
 @Component({
   moduleId: module.id,
@@ -15,7 +13,7 @@ const defaultColor = '#fc0';
 export class LightComponent implements OnInit {
   devices: Device[];
   programs: string[];
-  dynamic = true;
+  dynamic = false;
   private activeProgram: string;
   private code: string;
 
@@ -49,6 +47,16 @@ export class LightComponent implements OnInit {
     console.log(`color changed: device: ${deviceId}`);
     this.rgb.setColor(deviceId, device.color);
   }
+
+  broadcastColor(color) {
+    this.devices.forEach(d => {
+      this.rgb.setColor(d.id, color);
+    });
+  }
+
+  allOn() { this.broadcastColor('#ff8a14'); }
+
+  allOff() { this.broadcastColor('#000');  }
 
   changeProgram(newProgram) {
     this.rgbRealtime.setActiveProgram(newProgram)

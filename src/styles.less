@@ -1,37 +1,32 @@
+@color-primary:'#fc0';
+
 body {
   background: #454545;
   color: white;
 }
+
 h1 {
   color: #fc0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
-@-webkit-keyframes spinnerRotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
+
+@-webkit-keyframes spinnerRotate
+{
+  from{-webkit-transform:rotate(0deg);}
+  to{-webkit-transform:rotate(360deg);}
 }
-@-moz-keyframes spinnerRotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
+@-moz-keyframes spinnerRotate
+{
+  from{-moz-transform:rotate(0deg);}
+  to{-moz-transform:rotate(360deg);}
 }
-@-ms-keyframes spinnerRotate {
-  from {
-    -ms-transform: rotate(0deg);
-  }
-  to {
-    -ms-transform: rotate(360deg);
-  }
+@-ms-keyframes spinnerRotate
+{
+  from{-ms-transform:rotate(0deg);}
+  to{-ms-transform:rotate(360deg);}
 }
-.spin {
+.spin{
   -webkit-animation-name: spinnerRotate;
   -webkit-animation-duration: 0.5s;
   -webkit-animation-iteration-count: infinite;
@@ -41,9 +36,11 @@ h1 {
   -moz-animation-iteration-count: infinite;
   -moz-animation-timing-function: linear;
 }
+
 .container {
   margin: 3em 1em 1em 1em;
 }
+
 @media screen and (max-width: 500px) {
   div.color-picker {
     position: fixed !important;
@@ -52,15 +49,18 @@ h1 {
     transform: translate(-50%, -50%) !important;
   }
 }
+
 .color-picker > .arrow {
   display: none;
 }
+
 .nav-link.active {
   transition: color 0.3s ease-in-out;
   border-bottom: solid 1px #454545 !important;
   background: #454545 !important;
   color: #fc0 !important;
 }
+
 .nav-tabs > li.nav-item > a.nav-link {
   border-radius: 5px 5px 0 0;
 }

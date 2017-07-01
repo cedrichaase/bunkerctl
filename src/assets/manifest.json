@@ -1,0 +1,22 @@
+{
+  "name": "bunkerctl",
+  "short_name": "bunkerctl",
+  "start_url": "/light",
+  "display": "standalone",
+  "background_color": "#454545",
+  "theme_color": "#454545",
+  "orientation": "portrait",
+  "description": "A simply readable Hacker News app.",
+  "icons": [
+    {
+      "src": "img/nuclear.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "img/nuclear.svg",
+      "sizes": "72x72 96x96 128x128 256x256 512x512",
+      "type": "image/svg"
+    }
+  ]
+}

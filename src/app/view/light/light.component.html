@@ -1,43 +1,43 @@
-<div class="row">
-  <h1>Led strip control</h1>
-</div>
+<ul class="nav nav-tabs" style="margin-bottom: 2em;">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{active: !dynamic}" (click)="dynamic=false;">static</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{active: dynamic}" (click)="dynamic=true;">dynamic</a>
+  </li>
+</ul>
 
-<hr/>
-
-<div class="row" style="margin-bottom: 1em;">
-  <label for="dynamic" class="form-check-label">
-    <input type="checkbox"
-           name="dynamic"
-           class="form-check-input"
-           [checked]="dynamic"
-           (change)="toggleDynamic()">
-    Dynamic control
-  </label>
-</div>
-
+<!-- static -->
 <div *ngIf="!dynamic">
-  <div class="row">
-    <h3>Static color control</h3>
-  </div>
   <div *ngFor="let device of devices" class="form-group row" style="margin-top: 1em;">
-    <label for="{{ device.id }}" class="col-2 col-form-label">{{ device.description }}</label>
 
-    <div class="col-8">
+    <div class="col-12">
       <input  class="form-control"
+              readonly="readonly"
               id="{{ device.id }}"
+              [cpAlphaChannel]="'disabled'"
               [(colorPicker)]="device.color"
               [style.background]="device.color"
-              [value]="device.color"
+              [value]="device.description"
               (colorPickerChange)="switchColor(device.id)"/>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOn();">on</button>
+    </div>
+
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOff();">off</button>
     </div>
   </div>
 </div>
 
+<!-- dynamic -->
 <div *ngIf="dynamic">
-  <div class="row">
-    <h3>Dynamic color control</h3>
-  </div>
-
   <div class="form-group row">
     <label for="program" class="col-2 col-form-label">Preset</label>
 
@@ -53,7 +53,7 @@
     [mode]="'python'"
     [readOnly]="false"
     [autoUpdateContent]="true"
-    style="font-size: 13pt; min-height: 550px; width:100%; overflow: auto;"></div>
+    style="font-size: 13pt; min-height: 30vh; width:100%; overflow: auto;"></div>
   </div>
 
   <div class="row" style="margin-top: 1em;">

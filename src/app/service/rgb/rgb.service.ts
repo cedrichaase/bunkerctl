@@ -4,6 +4,7 @@ import * as io from 'socket.io-client';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import {environment} from '../../../environments/environment';
 
 export interface Device {
   id: string;
@@ -13,7 +14,7 @@ export interface Device {
 
 @Injectable()
 export class RgbService {
-  private url = 'http://localhost:3000';
+  private url = environment.endpoints.rgb;
   private socket;
 
   constructor(private http: Http) {

@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import {environment} from '../../../environments/environment';
 
 export interface IProgramInfo {
   name: string;
@@ -11,7 +12,7 @@ export interface IProgramInfo {
 
 @Injectable()
 export class RgbRealtimeService {
-  private url = 'http://localhost:5000';
+  private url = environment.endpoints.rgbRealtime;
 
   private url_mgmt = `${this.url}/mgmt`;
   private url_ctrl = `${this.url}/ctrl`;

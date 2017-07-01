@@ -27,6 +27,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "brace": "^0.10.0",
     "core-js": "^2.4.1",
+    "fontawesome": "^4.7.2",
     "monaco-editor": "^0.8.3",
     "ng2-ace-editor": "^0.2.2",
     "ng2-monaco-editor": "0.0.1",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@angular/cli": "^1.0.3",
     "@angular/compiler-cli": "^4.0.0",
+    "@angular/language-service": "^4.2.5",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",

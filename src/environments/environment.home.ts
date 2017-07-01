@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   endpoints: {
-    rgb: 'http://localhost:3000',
-    rgbRealtime: 'http://localhost:5000'
+    rgb: 'http://raspberrypi:3000',
+    rgbRealtime: 'http://raspberrypi:5000'
   }
 };
