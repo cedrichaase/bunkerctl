@@ -3,6 +3,9 @@ import {Device, RgbService} from '../../service/rgb/rgb.service';
 import {RgbRealtimeService} from '../../service/rgb-realtime/rgb-realtime.service';
 import 'brace';
 import 'brace/mode/python';
+import {TradfriService} from '../../service/tradfri/tradfri.service';
+import {environment} from '../../../environments/environment';
+
 
 @Component({
   moduleId: module.id,
@@ -14,10 +17,11 @@ export class LightComponent implements OnInit {
   devices: Device[];
   programs: string[];
   dynamic = false;
+  env = environment;
   private activeProgram: string;
   private code: string;
 
-  constructor(private rgb: RgbService, private rgbRealtime: RgbRealtimeService) { }
+  constructor(private rgb: RgbService,  private tradfri: TradfriService, private rgbRealtime: RgbRealtimeService) { }
 
   ngOnInit(): void {
     this.rgb.getDevices()
@@ -89,5 +93,21 @@ export class LightComponent implements OnInit {
     } else {
       this.changeProgram(this.activeProgram);
     }
+  }
+
+  toggleLights() {
+    this.tradfri.toggle();
+  }
+
+  switchHue() {
+    this.tradfri.hue();
+  }
+
+  incBrightness() {
+    this.tradfri.incBrightness();
+  }
+
+  decBrightness() {
+    this.tradfri.decBrightness();
   }
 }
