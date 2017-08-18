@@ -14,6 +14,7 @@ import { PiweatherComponent } from './view/piweather/piweather.component';
 import { AceEditorDirective, AceEditorComponent } from 'ng2-ace-editor';
 import 'brace';
 import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
+import {TradfriService} from './service/tradfri/tradfri.service';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
   ],
   providers: [
     RgbService,
-    RgbRealtimeService
+    RgbRealtimeService,
+    TradfriService
   ],
   bootstrap: [AppComponent]
 })
