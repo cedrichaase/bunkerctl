@@ -29,6 +29,11 @@ export class LightComponent implements OnInit {
         this.devices = devices;
       });
 
+    this.rgb.colorBroadcast().subscribe(data => {
+      const device = this.devices.find(dev => dev.id === data.device);
+      device.color = `#${data.color}`;
+    });
+
     this.rgbRealtime.getPrograms()
       .subscribe(programs => {
         this.programs = programs;
@@ -54,6 +59,7 @@ export class LightComponent implements OnInit {
 
   broadcastColor(color) {
     this.devices.forEach(d => {
+      d.color = color;
       this.rgb.setColor(d.id, color);
     });
   }
