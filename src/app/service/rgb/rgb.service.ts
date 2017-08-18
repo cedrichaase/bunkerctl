@@ -12,6 +12,12 @@ export interface Device {
   color: string;
 }
 
+export interface ColorData {
+  color: string;
+  device: string;
+}
+
+
 @Injectable()
 export class RgbService {
   private url = environment.endpoints.rgb;
@@ -20,6 +26,16 @@ export class RgbService {
   constructor(private http: Http) {
     this.socket = io(this.url);
   }
+
+
+  public colorBroadcast(): Observable<ColorData> {
+    return new Observable(observer => {
+      this.socket.on('color', data => {
+        observer.next(data);
+      });
+    });
+  }
+
 
 
   /**
