@@ -34,6 +34,13 @@ export class RgbRealtimeService {
       .map(this.extractData);
   }
 
+  public stopActiveProgram(): Observable<undefined> {
+    const url = `${this.url_ctrl}/program/`;
+
+    return this.http.put(url, '')
+      .map(this.extractData);
+  }
+
   public getActiveProgram(): Observable<string> {
     const url = `${this.url_ctrl}/program`;
 

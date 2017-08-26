@@ -2,30 +2,68 @@
 <!--<label for="program" class="col-2 col-form-label">Preset</label>-->
 
 <!--<select class="col-8" name="program" id="program" [(ngModel)]="activeProgram"-->
-<!--(change)="changeProgram(activeProgram)">-->
+<!--(changrunProgramgram(activeProgram)">-->
 <!--<option></option>-->
 <!--<option *ngFor="let program of programs">{{ program }}</option>-->
 <!--</select>-->
 <!--</div>-->
 
+
 <div class="row">
-  <div class="col-4">
-    <ul class="list-group">
-      <li *ngFor="let program of programs" class="list-group item">{{ program }}</li>
+  <div class="col-md-4 col-sm-12">
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let program of programs"
+          class="list-group-item"
+          [ngClass]="{'selected': (program === selectedProgram)}"
+          (click)="selectProgram(program)">
+        {{ program }}
+      </li>
     </ul>
+    <a class="btn btn-primary hidden-sm-down" style="width: 100%; outline: none;">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+
+  <div class="col-md-8 hidden-sm-down">
+    <div class="row">
+      <div ace-editor
+      [(text)]="code"
+      [mode]="'python'"
+      [readOnly]="false"
+      [autoUpdateContent]="true"
+      style="font-size: 11pt; min-height: 60vh; width:100%; overflow: auto;"></div>
+    </div>
   </div>
 
 </div>
 
-<!--<div class="row">-->
-<!--<div ace-editor-->
-<!--[(text)]="code"-->
-<!--[mode]="'python'"-->
-<!--[readOnly]="false"-->
-<!--[autoUpdateContent]="true"-->
-<!--style="font-size: 13pt; min-height: 30vh; width:100%; overflow: auto;"></div>-->
-<!--</div>-->
-
+<!--controls-->
 <div class="row" style="margin-top: 1em;">
-  <button class="btn btn-primary" (click)="saveProgram()">save</button>
+
+  <div class="col-md-4 hidden-sm-down"></div>
+
+  <div class="col-8 dynamic-btn-container">
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <button class="btn btn-secondary" (click)="runProgram(selectedProgram)">
+          <i class="fa fa-play"></i>
+          run
+        </button>
+
+        <button class="btn btn-secondary" (click)="stopProgram()">
+          <i class="fa fa-stop"></i>
+          stop
+        </button>
+
+        <button class="btn btn-primary" (click)="saveProgram()">
+          <i class="fa fa-floppy-o"></i>
+          save
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+
+
 </div>

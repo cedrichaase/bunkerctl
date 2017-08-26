@@ -44,13 +44,11 @@ h1 {
 .container {
   margin: 3em 1em 1em 1em;
 }
-@media screen and (max-width: 500px) {
-  div.color-picker {
-    position: fixed !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-  }
+div.color-picker {
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 .color-picker > .arrow {
   display: none;
@@ -102,4 +100,10 @@ input {
 .navbar-nav > li.nav-item > .nav-link.active {
   background: rgba(0, 0, 0, 0) !important;
   border: none !important;
+}
+.list-group-item {
+  background: #666;
+}
+.list-group-item.selected {
+  border-right: #fc0 2px solid !important;
 }

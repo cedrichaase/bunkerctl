@@ -7,6 +7,7 @@ import {RgbRealtimeService} from '../../../service/rgb-realtime/rgb-realtime.ser
   styleUrls: ['./dynamic-light.component.css']
 })
 export class DynamicLightComponent implements OnInit {
+  selectedProgram: string;
   activeProgram: string;
   programs: string[];
   code: string;
@@ -18,6 +19,7 @@ export class DynamicLightComponent implements OnInit {
     this.rgbRealtime.getPrograms()
       .subscribe(programs => {
         this.programs = programs;
+        this.selectProgram(programs[0]);
       });
 
     this.rgbRealtime.getActiveProgram()
@@ -32,25 +34,31 @@ export class DynamicLightComponent implements OnInit {
       });
   }
 
+  selectProgram(newProgram) {
+    this.rgbRealtime.getProgram(newProgram)
+      .subscribe(info => {
+        console.log(info);
+        this.code = info.content;
+      });
 
-  changeProgram(newProgram) {
+    this.selectedProgram = newProgram;
+  }
+
+  runProgram(newProgram) {
     this.rgbRealtime.setActiveProgram(newProgram)
       .subscribe(program => {
         console.log(`set program to ${program}`);
       });
+  }
 
-    if (newProgram) {
-      console.log('changeProgram', newProgram);
-      this.rgbRealtime.getProgram(newProgram)
-        .subscribe(info => {
-          console.log(info);
-          this.code = info.content;
-        });
-    }
+  stopProgram() {
+    this.rgbRealtime.stopActiveProgram().subscribe(() => {
+      console.log('program stopped!');
+    });
   }
 
   saveProgram() {
-    this.rgbRealtime.saveProgram(this.activeProgram, this.code)
+    this.rgbRealtime.saveProgram(this.selectedProgram, this.code)
       .subscribe(info => {
         console.log('saved program', info);
       });
