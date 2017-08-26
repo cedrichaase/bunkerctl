@@ -5,16 +5,19 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './view/dashboard/dashboard.component';
-import { LightComponent } from './view/light/light.component';
+import { StaticLightComponent } from './view/light/static/static-light.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ColorPickerModule} from 'angular2-color-picker';
+import {ColorPickerModule} from 'ngx-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
 import { PiweatherComponent } from './view/piweather/piweather.component';
 import { AceEditorDirective, AceEditorComponent } from 'ng2-ace-editor';
 import 'brace';
 import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
 import {TradfriService} from './service/tradfri/tradfri.service';
+import { TradfriComponent } from './view/light/tradfri/tradfri.component';
+import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.component';
+import { LightComponent } from './view/light/light.component';
 
 
 @NgModule({
@@ -23,7 +26,12 @@ import {TradfriService} from './service/tradfri/tradfri.service';
     DashboardComponent,
     LightComponent,
     PiweatherComponent,
-    AceEditorDirective
+    AceEditorDirective,
+    StaticLightComponent,
+    PiweatherComponent,
+    TradfriComponent,
+    DynamicLightComponent,
+    LightComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,7 @@
-@color-primary:'#fc0';
+@color-primary: #fc0;
+@grey-light: #666;
+@grey-medium: #454545;
+@grey-dark: #333;
 
 body {
   background: #454545;
@@ -63,4 +66,59 @@ h1 {
 
 .nav-tabs > li.nav-item > a.nav-link {
   border-radius: 5px 5px 0 0;
+}
+
+@color-widget: @grey-medium;
+
+#accordion > .card {
+  border: 0 !important;
+  background: @grey-dark !important;
+
+  margin: .25em;
+
+  .card-header {
+    border: @color-widget solid 1px !important;
+  }
+}
+
+.card-header {
+  padding: 0 !important;
+}
+
+.card-block {
+  border: @color-widget solid 1px !important;
+  border-top: none !important;
+  padding: 0 !important;
+  margin: 0 37px 0 0 !important;
+  background: @grey-dark;
+}
+
+.collapse-button {
+  background: white;
+  color: darkgray;
+  min-width: 36px;
+
+  i {
+    margin-left: 95%;
+  }
+}
+
+input {
+  outline-style: none !important;
+  box-shadow: none !important;
+  border: 0 none !important;
+  -webkit-appearance: none !important;
+}
+
+.color-control-child {
+  &:not(:last-child) {
+    input {
+      border-bottom: @color-widget 1px solid !important;
+    }
+  }
+}
+
+.navbar-nav > li.nav-item > .nav-link.active {
+  background: rgba(0, 0, 0, 0) !important;
+  border: none !important;
 }

@@ -1,0 +1,31 @@
+<!--<div class="form-group row">-->
+<!--<label for="program" class="col-2 col-form-label">Preset</label>-->
+
+<!--<select class="col-8" name="program" id="program" [(ngModel)]="activeProgram"-->
+<!--(change)="changeProgram(activeProgram)">-->
+<!--<option></option>-->
+<!--<option *ngFor="let program of programs">{{ program }}</option>-->
+<!--</select>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li *ngFor="let program of programs" class="list-group item">{{ program }}</li>
+    </ul>
+  </div>
+
+</div>
+
+<!--<div class="row">-->
+<!--<div ace-editor-->
+<!--[(text)]="code"-->
+<!--[mode]="'python'"-->
+<!--[readOnly]="false"-->
+<!--[autoUpdateContent]="true"-->
+<!--style="font-size: 13pt; min-height: 30vh; width:100%; overflow: auto;"></div>-->
+<!--</div>-->
+
+<div class="row" style="margin-top: 1em;">
+  <button class="btn btn-primary" (click)="saveProgram()">save</button>
+</div>

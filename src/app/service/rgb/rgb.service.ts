@@ -10,6 +10,7 @@ export interface Device {
   id: string;
   description: string;
   color: string;
+  controls?: Device[];
 }
 
 export interface ColorData {

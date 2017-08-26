@@ -64,3 +64,42 @@ h1 {
 .nav-tabs > li.nav-item > a.nav-link {
   border-radius: 5px 5px 0 0;
 }
+#accordion > .card {
+  border: 0 !important;
+  background: #333 !important;
+  margin: .25em;
+}
+#accordion > .card .card-header {
+  border: #454545 solid 1px !important;
+}
+.card-header {
+  padding: 0 !important;
+}
+.card-block {
+  border: #454545 solid 1px !important;
+  border-top: none !important;
+  padding: 0 !important;
+  margin: 0 37px 0 0 !important;
+  background: #333;
+}
+.collapse-button {
+  background: white;
+  color: darkgray;
+  min-width: 36px;
+}
+.collapse-button i {
+  margin-left: 95%;
+}
+input {
+  outline-style: none !important;
+  box-shadow: none !important;
+  border: 0 none !important;
+  -webkit-appearance: none !important;
+}
+.color-control-child:not(:last-child) input {
+  border-bottom: #454545 1px solid !important;
+}
+.navbar-nav > li.nav-item > .nav-link.active {
+  background: rgba(0, 0, 0, 0) !important;
+  border: none !important;
+}

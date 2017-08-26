@@ -1,0 +1,65 @@
+
+
+<!-- static -->
+<div *ngIf="!dynamic">
+
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card" *ngFor="let device of devices">
+      <div class="card-header" role="tab" id="heading{{ device.id }}">
+
+          <div class="form-group" style="width: 100%; margin-bottom: 0; display: flex;">
+
+            <div style="padding: 0; flex: 1;">
+              <input class="form-control color-control-master"
+                     readonly="readonly"
+                     id="{{ device.id }}"
+                     [cpAlphaChannel]="'disabled'"
+                     [(colorPicker)]="device.color"
+                     [style.background]="device.color"
+                     [value]="device.description"
+                     (colorPickerChange)="switchColor(device.id)"/>
+            </div>
+
+            <a class="collapse-button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ device.id }}"
+               aria-expanded="false">
+              <label class="col-form-label" for="{{ device.id }}">
+                <i class="fa fa-plus"></i>
+              </label>
+            </a>
+
+          </div>
+
+      </div>
+
+      <div id="collapse{{ device.id }}" class="collapse" role="tabpanel">
+        <div class="card-block">
+
+          <div *ngFor="let control of device.controls" class="color-control-child">
+            <input class="form-control"
+                   readonly="readonly"
+                   id="{{ control.id }}"
+                   [cpAlphaChannel]="'disabled'"
+                   [(colorPicker)]="control.color"
+                   [style.background]="control.color"
+                   [value]="control.description"
+                   (colorPickerChange)="switchColor(control.id)"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOn();">on</button>
+    </div>
+
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOff();">off</button>
+    </div>
+  </div>
+
+</div>
