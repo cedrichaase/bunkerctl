@@ -8,7 +8,7 @@ import {LightComponent} from './view/light/light.component';
 import {TradfriComponent} from './view/light/tradfri/tradfri.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/light', pathMatch: 'full' },
+  { path: '', redirectTo: '/light/static', pathMatch: 'full' },
   {
     path: 'light',
     component: LightComponent,
