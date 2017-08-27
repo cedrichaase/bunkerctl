@@ -20,6 +20,7 @@ export class StaticLightComponent implements OnInit {
   env = environment;
   private activeProgram: string;
   private code: string;
+  masterColor: string;
 
   constructor(private rgb: RgbService, private rgbRealtime: RgbRealtimeService) { }
 
@@ -86,6 +87,7 @@ export class StaticLightComponent implements OnInit {
   }
 
   broadcastColor(color) {
+    this.masterColor = color;
     this.devices.forEach(d => {
       d.color = color;
       this.rgb.setColor(d.id, color);
