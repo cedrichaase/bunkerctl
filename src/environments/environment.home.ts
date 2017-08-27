@@ -3,10 +3,13 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+const host = 'raspberrypi';
+
 export const environment = {
-  production: false,
+  production: true,
   endpoints: {
-    rgb: 'http://raspberrypi:3000',
-    rgbRealtime: 'http://raspberrypi:5000'
+    rgb: `http://${host}:3000`,
+    rgbRealtime: `http://${host}:5000`,
+    tradfri: `http://${host}:5000`
   }
 };
