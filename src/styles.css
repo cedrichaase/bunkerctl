@@ -41,6 +41,16 @@ h1 {
   -moz-animation-iteration-count: infinite;
   -moz-animation-timing-function: linear;
 }
+.spin-slow {
+  -webkit-animation-name: spinnerRotate;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spinnerRotate;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+}
 .container {
   margin: 3em 1em 1em 1em;
 }
@@ -103,7 +113,4 @@ input {
 }
 .list-group-item {
   background: #666;
-}
-.list-group-item.selected {
-  border-right: #fc0 2px solid !important;
 }

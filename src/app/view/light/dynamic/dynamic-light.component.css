@@ -1,3 +1,26 @@
 .dynamic-btn-container {
   padding: 0 !important;
 }
+.list-group {
+  min-height: 62.1vh;
+  height: 62.1vh;
+  overflow-y: auto;
+}
+.list-group-item {
+  padding: 0 !important;
+  min-height: 3rem !important;
+  border-right: #666 2px solid !important;
+}
+.list-group-item.selected {
+  border-right: #fc0 2px solid !important;
+}
+a.btn.btn-secondary {
+  color: black;
+}
+.ace_editor {
+  font-size: 11pt;
+  min-height: 62.1vh;
+  width: 100%;
+  overflow: auto;
+  margin-right: 1em;
+}

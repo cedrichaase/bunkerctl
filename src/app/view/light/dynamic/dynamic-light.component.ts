@@ -47,12 +47,14 @@ export class DynamicLightComponent implements OnInit {
   runProgram(newProgram) {
     this.rgbRealtime.setActiveProgram(newProgram)
       .subscribe(program => {
+        this.activeProgram = newProgram;
         console.log(`set program to ${program}`);
       });
   }
 
   stopProgram() {
     this.rgbRealtime.stopActiveProgram().subscribe(() => {
+      this.activeProgram = '';
       console.log('program stopped!');
     });
   }
