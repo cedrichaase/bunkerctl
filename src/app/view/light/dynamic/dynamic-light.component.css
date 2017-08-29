@@ -2,8 +2,8 @@
   padding: 0 !important;
 }
 .list-group {
-  min-height: 62.1vh;
-  height: 62.1vh;
+  min-height: 70vh;
+  height: 70vh;
   overflow-y: auto;
 }
 .list-group-item {
@@ -19,7 +19,7 @@ a.btn.btn-secondary {
 }
 .ace_editor {
   font-size: 11pt;
-  min-height: 62.1vh;
+  min-height: 72.7vh;
   width: 100%;
   overflow: auto;
   margin-right: 1em;

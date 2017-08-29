@@ -15,11 +15,6 @@ declare const $: any;
 })
 export class StaticLightComponent implements OnInit {
   devices: Device[];
-  programs: string[];
-  dynamic = false;
-  env = environment;
-  private activeProgram: string;
-  private code: string;
   masterColor: string;
 
   constructor(private rgb: RgbService, private rgbRealtime: RgbRealtimeService) { }
@@ -43,22 +38,6 @@ export class StaticLightComponent implements OnInit {
         });
       }
     });
-
-    this.rgbRealtime.getPrograms()
-      .subscribe(programs => {
-        this.programs = programs;
-      });
-
-    this.rgbRealtime.getActiveProgram()
-      .subscribe(activeProgram => {
-        if (activeProgram) {
-          this.activeProgram = activeProgram;
-          this.rgbRealtime.getProgram(activeProgram)
-            .subscribe(activeProgramInfo => {
-              this.code = activeProgramInfo.content;
-            });
-        }
-      });
   }
 
   private findDevice(id: string): Device {
@@ -97,37 +76,4 @@ export class StaticLightComponent implements OnInit {
   allOn() { this.broadcastColor('#ff8a14'); }
 
   allOff() { this.broadcastColor('#000');  }
-
-  changeProgram(newProgram) {
-    this.rgbRealtime.setActiveProgram(newProgram)
-      .subscribe(program => {
-        console.log(`set program to ${program}`);
-      });
-
-    if (newProgram) {
-      console.log('changeProgram', newProgram);
-      this.rgbRealtime.getProgram(newProgram)
-        .subscribe(info => {
-          console.log(info);
-          this.code = info.content;
-        });
-    }
-  }
-
-  saveProgram() {
-    this.rgbRealtime.saveProgram(this.activeProgram, this.code)
-      .subscribe(info => {
-        console.log('saved program', info);
-      });
-  }
-
-  toggleDynamic() {
-    this.dynamic = !this.dynamic;
-
-    if (!this.dynamic) {
-      this.changeProgram('');
-    } else {
-      this.changeProgram(this.activeProgram);
-    }
-  }
 }

@@ -11,6 +11,9 @@ export class DynamicLightComponent implements OnInit {
   activeProgram: string;
   programs: string[];
   code: string;
+  restartOnSave: boolean;
+
+  newName: string;
 
   constructor(private rgbRealtime: RgbRealtimeService) { }
 
@@ -26,6 +29,7 @@ export class DynamicLightComponent implements OnInit {
       .subscribe(activeProgram => {
         if (activeProgram) {
           this.activeProgram = activeProgram;
+          this.selectedProgram = activeProgram;
           this.rgbRealtime.getProgram(activeProgram)
             .subscribe(activeProgramInfo => {
               this.code = activeProgramInfo.content;
@@ -48,14 +52,12 @@ export class DynamicLightComponent implements OnInit {
     this.rgbRealtime.setActiveProgram(newProgram)
       .subscribe(program => {
         this.activeProgram = newProgram;
-        console.log(`set program to ${program}`);
       });
   }
 
   stopProgram() {
     this.rgbRealtime.stopActiveProgram().subscribe(() => {
       this.activeProgram = '';
-      console.log('program stopped!');
     });
   }
 
@@ -63,8 +65,10 @@ export class DynamicLightComponent implements OnInit {
     this.rgbRealtime.saveProgram(this.selectedProgram, this.code)
       .subscribe(info => {
         console.log('saved program', info);
+
+        if (this.restartOnSave) {
+          this.runProgram(this.selectedProgram);
+        }
       });
   }
-
-
 }
