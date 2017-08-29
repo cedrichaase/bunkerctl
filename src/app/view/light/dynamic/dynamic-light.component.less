@@ -1,3 +1,5 @@
+@import '../../../../colors';
+
 @main-content-height: 70vh;
 
 .dynamic-btn-container {
@@ -14,10 +16,10 @@
   padding: 0 !important;
   min-height: 3rem !important;
 
-  border-right: #666 2px solid !important;
+  border-right: @grey-light 2px solid !important;
 
   &.selected {
-    border-right: #fc0 2px solid !important;
+    border-right: @color-primary 2px solid !important;
   }
 }
 
@@ -26,8 +28,8 @@ a.btn.btn-secondary {
 }
 
 .ace_editor {
-  font-size: 11pt;
-  min-height: @main-content-height + 2.7vh;
+  font-size: 10pt;
+  min-height: @main-content-height - .35vh;
   width: 100%;
   overflow: auto;
   margin-right: 1em;

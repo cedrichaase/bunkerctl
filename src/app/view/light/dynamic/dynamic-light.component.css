@@ -9,7 +9,7 @@
 .list-group-item {
   padding: 0 !important;
   min-height: 3rem !important;
-  border-right: #666 2px solid !important;
+  border-right: #6b6b6b 2px solid !important;
 }
 .list-group-item.selected {
   border-right: #fc0 2px solid !important;
@@ -18,8 +18,8 @@ a.btn.btn-secondary {
   color: black;
 }
 .ace_editor {
-  font-size: 11pt;
-  min-height: 72.7vh;
+  font-size: 10pt;
+  min-height: 69.65vh;
   width: 100%;
   overflow: auto;
   margin-right: 1em;

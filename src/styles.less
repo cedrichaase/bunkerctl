@@ -1,9 +1,4 @@
-@color-primary: #fc0;
-@grey-super-extra-light: #ddd;
-@grey-extra-light: #999;
-@grey-light: #666;
-@grey-medium: #454545;
-@grey-dark: #333;
+@import 'colors';
 
 body {
   background: #454545;
@@ -114,7 +109,7 @@ div.color-picker {
 }
 
 input {
-  outline-style: none !important;
+  //outline-style: none !important;
   box-shadow: none !important;
   border: 0 none !important;
   -webkit-appearance: none !important;
@@ -155,7 +150,6 @@ input {
 
 
   .card-footer {
-    padding: 1ex !important;
     background: @card-bg !important;
   }
 }
@@ -177,8 +171,27 @@ input {
   }
 }
 
-.btn.btn-secondary {
+.btn {
+  //border: @grey-dark 1px solid;
   border: @grey-medium 1px solid;
-  background: @grey-extra-light !important;
-  opacity: 1;
+
+  &:hover, &:focus {
+    outline: none !important;
+    border: @grey-medium 1px solid;
+  }
+
+  &.btn-secondary {
+    background: @grey-extra-light !important;
+    opacity: 1;
+
+    &:hover {
+      background: @grey-super-extra-light !important;
+    }
+  }
+
+  &.btn-primary {
+    &:hover {
+      background: @color-primary-light !important;
+    }
+  }
 }
