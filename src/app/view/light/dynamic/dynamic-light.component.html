@@ -24,15 +24,15 @@
 
       <!--<div class="card-footer">-->
         <div class="row" style="margin: 0;">
-          <a class="btn btn-primary hidden-sm-down col-md-8" style="width: 100%; outline: none;" (click)="newProgram()">
+          <a class="btn btn-primary hidden-sm-down col-md-12" style="width: 100%; outline: none;" (click)="newProgram()">
             <i class="fa fa-plus"></i>
           </a>
 
-          <a class="btn btn-secondary col-md-2 col-xs-6" (click)="runProgram(selectedProgram)">
+          <a class="btn btn-secondary col-xs-6 hidden-md-up" (click)="runProgram(selectedProgram)">
             <i class="fa fa-play"></i>
           </a>
 
-          <a class="btn btn-secondary col-md-2 col-xs-6" (click)="stopProgram()">
+          <a class="btn btn-secondary col-xs-6 hidden-md-up" (click)="stopProgram()">
             <i class="fa fa-stop"></i>
           </a>
         </div>
@@ -55,6 +55,15 @@
           </div>
 
           <div style="position: absolute; right: 1px;">
+
+            <a class="btn btn-secondary" (click)="runProgram(selectedProgram)">
+              <i class="fa fa-play"></i>
+            </a>
+
+            <a class="btn btn-secondary" (click)="stopProgram()">
+              <i class="fa fa-stop"></i>
+            </a>
+
             <button class="btn btn-primary"
                     (click)="saveProgram()"
                     data-toggle="tooltip" data-placement="top" title="Save program">

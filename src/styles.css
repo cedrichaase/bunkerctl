@@ -147,6 +147,7 @@ input {
   border: #454545 1px solid;
 }
 .btn.btn-secondary {
+  color: white !important;
   background: #858585 !important;
   opacity: 1;
 }
