@@ -62,11 +62,24 @@ div.color-picker {
   display: none;
 }
 
-.nav-link.active {
+.nav.nav-tabs .nav-item {
+
+}
+
+.nav-link {
+  color: @grey-super-extra-light;
   transition: color 0.3s ease-in-out;
-  border-bottom: solid 1px #454545 !important;
-  background: #454545 !important;
-  color: #fc0 !important;
+
+  &:hover:not(.active) {
+    border: transparent 1px solid !important;
+    color: @color-primary-light;
+  }
+
+  &.active {
+    border-bottom: solid 1px #454545 !important;
+    background: #454545 !important;
+    color: #fc0 !important;
+  }
 }
 
 .nav-tabs > li.nav-item > a.nav-link {

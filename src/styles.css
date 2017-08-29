@@ -63,8 +63,15 @@ div.color-picker {
 .color-picker > .arrow {
   display: none;
 }
-.nav-link.active {
+.nav-link {
+  color: #c4c4c4;
   transition: color 0.3s ease-in-out;
+}
+.nav-link:hover:not(.active) {
+  border: transparent 1px solid !important;
+  color: #ffdb4d;
+}
+.nav-link.active {
   border-bottom: solid 1px #454545 !important;
   background: #454545 !important;
   color: #fc0 !important;

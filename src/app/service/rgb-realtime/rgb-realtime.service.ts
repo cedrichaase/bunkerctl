@@ -55,10 +55,12 @@ export class RgbRealtimeService {
       .map(this.extractData);
   }
 
-  public saveProgram(name: string, content: string): Observable<IProgramInfo> {
+  public saveProgram(name: string, programInfo: IProgramInfo): Observable<IProgramInfo> {
     const url = `${this.url_mgmt}/program/${name}`;
 
-    return this.http.put(url, {content: content})
+    console.log(programInfo);
+
+    return this.http.put(url, programInfo)
       .map(this.extractData);
   }
 

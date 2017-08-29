@@ -62,13 +62,15 @@ export class DynamicLightComponent implements OnInit {
   }
 
   saveProgram() {
-    this.rgbRealtime.saveProgram(this.selectedProgram, this.code)
+    this.rgbRealtime.saveProgram(this.selectedProgram, {name: this.newName, content: this.code})
       .subscribe(info => {
         console.log('saved program', info);
 
         if (this.restartOnSave) {
           this.runProgram(this.selectedProgram);
         }
+
+        this.ngOnInit();
       });
   }
 }

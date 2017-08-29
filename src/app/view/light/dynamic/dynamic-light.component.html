@@ -51,7 +51,7 @@
         <form class="form-inline">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon">Name</div>
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Program name" #newName value="{{ selectedProgram }}">
+            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Program name" name="newName" [(ngModel)]="newName" value="{{ selectedProgram }}">
           </div>
 
           <div style="position: absolute; right: 1px;">
