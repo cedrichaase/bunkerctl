@@ -24,15 +24,15 @@
 
       <!--<div class="card-footer">-->
         <div class="row" style="margin: 0;">
-          <a class="btn btn-primary hidden-sm-down col-md-12" style="width: 100%; outline: none;" (click)="openModal(createModalContent)">
+          <a class="btn btn-primary col-md-12 d-none d-md-block" style="width: 100%; outline: none;" (click)="openModal(createModalContent)">
             <i class="fa fa-plus"></i>
           </a>
 
-          <a class="btn btn-secondary col-xs-6 hidden-md-up" (click)="runProgram(selectedProgram)">
+          <a class="btn btn-secondary col-xs-6 d-block d-md-none" (click)="runProgram(selectedProgram)">
             <i class="fa fa-play"></i>
           </a>
 
-          <a class="btn btn-secondary col-xs-6 hidden-md-up" (click)="stopProgram()">
+          <a class="btn btn-secondary col-xs-6 d-block d-md-none" (click)="stopProgram()">
             <i class="fa fa-stop"></i>
           </a>
         </div>
@@ -42,7 +42,7 @@
   </div>
 
   <!--editor-card-->
-  <div class="col-md-8 hidden-sm-down">
+  <div class="col-md-8 d-none d-md-block">
     <div class="card">
 
       <!--header-->

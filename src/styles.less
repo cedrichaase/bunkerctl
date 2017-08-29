@@ -126,6 +126,8 @@ input {
   box-shadow: none !important;
   border: 0 none !important;
   -webkit-appearance: none !important;
+
+  border-radius: 0 !important;
 }
 
 .color-control-child {
@@ -150,6 +152,7 @@ input {
 .card {
   //padding: 1ex !important;
   background: @card-bg;
+  border-radius: 0 !important;
 
 
   .card-header {
@@ -174,6 +177,7 @@ input {
   .input-group-addon {
     background: fade(@grey-dark, 50%);
     color: @grey-extra-light;
+    border-radius: 0 !important;
   }
 
   input[type=text] {
@@ -187,6 +191,7 @@ input {
 .btn {
   //border: @grey-dark 1px solid;
   border: @grey-medium 1px solid;
+  border-radius: 0 !important;
 
   &:hover, &:focus {
     outline: none !important;
@@ -204,6 +209,8 @@ input {
   }
 
   &.btn-primary {
+    background: @color-primary;
+
     &:hover {
       background: @color-primary-light !important;
     }
