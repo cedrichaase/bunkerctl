@@ -24,7 +24,7 @@
 
       <!--<div class="card-footer">-->
         <div class="row" style="margin: 0;">
-          <a class="btn btn-primary hidden-sm-down col-md-12" style="width: 100%; outline: none;" (click)="newProgram()">
+          <a class="btn btn-primary hidden-sm-down col-md-12" style="width: 100%; outline: none;" (click)="openModal(createModalContent)">
             <i class="fa fa-plus"></i>
           </a>
 
@@ -51,7 +51,12 @@
         <form class="form-inline">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon">Name</div>
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Program name" name="newName" [(ngModel)]="newName" value="{{ selectedProgram }}">
+            <input type="text"
+                   class="form-control"
+                   id="inlineFormInputGroup"
+                   name="updateName"
+                   [(ngModel)]="updateName"
+                   value="{{ selectedProgram }}">
           </div>
 
           <div style="position: absolute; right: 1px;">
@@ -68,6 +73,11 @@
                     (click)="saveProgram()"
                     data-toggle="tooltip" data-placement="top" title="Save program">
               <i class="fa fa-floppy-o"></i>
+            </button>
+
+            <button class="btn btn-danger"
+                    (click)="openModal(deleteModalContent)">
+              <i class="fa fa-trash-o"></i>
             </button>
           </div>
         </form>
@@ -89,3 +99,71 @@
     </div>
   </div>
 </div>
+
+<ng-template #createModalContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add new program</h4>
+  </div>
+  <div class="modal-body">
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <div class="input-group-addon">Name</div>
+      <input type="text"
+             class="form-control"
+             id="updateName"
+             name="newName"
+             [(ngModel)]="newName"
+             value="{{ selectedProgram }}">
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c()">
+      <i class="fa fa-times"></i>
+    </button>
+    <button class="btn btn-primary" (click)="c(); createProgram(newName)">
+      <i class="fa fa-floppy-o"></i>
+    </button>
+  </div>
+</ng-template>
+
+
+<ng-template #deleteModalContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Delete program</h4>
+  </div>
+  <div class="modal-body">
+
+    <p class="text-danger">
+      You are about to delete the program <code>{{ selectedProgram }}</code>.
+    </p>
+
+    <p>
+      Enter '<code>{{ selectedProgram }}</code>' in the text field below to confirm.
+    </p>
+
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+      <div class="input-group-addon">Name</div>
+      <input type="text"
+             class="form-control"
+             id="deleteName"
+             placeholder="Enter program name to delete it"
+             name="deleteName"
+             [(ngModel)]="deleteName"
+             value="">
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c()">
+      <i class="fa fa-times"></i>
+    </button>
+    <button class="btn btn-danger"
+            [disabled]="deleteName !== selectedProgram"
+            (click)="c(); deleteProgram(deleteName)">
+      <i class="fa fa-trash-o"></i>
+    </button>
+  </div>
+</ng-template>

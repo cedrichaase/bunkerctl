@@ -164,3 +164,16 @@ input {
 .btn.btn-primary:hover {
   background: #ffdb4d !important;
 }
+.modal-content {
+  background: #454545;
+}
+.modal-content .modal-header {
+  border-bottom: #6b6b6b 1px solid;
+}
+.modal-content .modal-footer {
+  border-top: #6b6b6b 1px solid;
+}
+code {
+  background: transparent;
+  color: #fc0;
+}

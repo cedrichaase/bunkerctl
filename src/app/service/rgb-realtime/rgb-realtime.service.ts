@@ -58,9 +58,21 @@ export class RgbRealtimeService {
   public saveProgram(name: string, programInfo: IProgramInfo): Observable<IProgramInfo> {
     const url = `${this.url_mgmt}/program/${name}`;
 
-    console.log(programInfo);
-
     return this.http.put(url, programInfo)
+      .map(this.extractData);
+  }
+
+  public deleteProgram(name: string) {
+    const url = `${this.url_mgmt}/program/${name}`;
+
+    return this.http.delete(url, '')
+      .map(this.extractData);
+  }
+
+  public createProgram(name: string): Observable<IProgramInfo> {
+    const url = `${this.url_mgmt}/program/${name}`;
+
+    return this.http.post(url, undefined)
       .map(this.extractData);
   }
 
