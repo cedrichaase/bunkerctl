@@ -17,20 +17,17 @@ import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
 import {TradfriService} from './service/tradfri/tradfri.service';
 import { TradfriComponent } from './view/light/tradfri/tradfri.component';
 import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.component';
-import { LightComponent } from './view/light/light.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LightComponent,
     PiweatherComponent,
     StaticLightComponent,
     PiweatherComponent,
     TradfriComponent,
-    DynamicLightComponent,
-    LightComponent
+    DynamicLightComponent
   ],
   imports: [
     BrowserModule,
