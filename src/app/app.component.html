@@ -9,19 +9,9 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Beleuchtung</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" routerLink="light/static" routerLinkActive="active">static</a>
-          <a class="dropdown-item" routerLink="light/dynamic" routerLinkActive="active">dynamic</a>
-          <a class="dropdown-item" routerLink="light/tradfri" routerLinkActive="active">tradfri</a>
-        </div>
-      </li>
+      <li class="nav-item"><a routerLink="light/static" routerLinkActive="active" class="nav-link">static</a></li>
+      <li class="nav-item"><a routerLink="light/dynamic" routerLinkActive="active" class="nav-link">dynamic</a></li>
+      <li class="nav-item"><a routerLink="light/tradfri" routerLinkActive="active" class="nav-link">tradfri</a></li>
     </ul>
   </div>
 </nav>
