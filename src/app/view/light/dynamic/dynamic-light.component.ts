@@ -31,11 +31,8 @@ export class DynamicLightComponent implements OnInit {
 
         this.rgbRealtime.getActiveProgram()
           .subscribe(activeProgram => {
-            if (activeProgram) {
-              this.activeProgram = activeProgram;
-
-              this.selectProgram(programName || activeProgram || programs[0]);
-            }
+            if (activeProgram) { this.activeProgram = activeProgram; }
+            this.selectProgram(programName || activeProgram || programs[0]);
           });
       });
   }
