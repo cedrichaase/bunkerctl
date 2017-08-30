@@ -21,32 +21,28 @@ export class DynamicLightComponent implements OnInit {
   constructor(private rgbRealtime: RgbRealtimeService, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.refreshAndSelect();
+  }
 
+  refreshAndSelect(programName?) {
     this.rgbRealtime.getPrograms()
       .subscribe(programs => {
         this.programs = programs;
-        if (!this.selectedProgram) {
-          this.selectProgram(programs[0]);
-        }
-      });
 
-    this.rgbRealtime.getActiveProgram()
-      .subscribe(activeProgram => {
-        if (activeProgram) {
-          this.activeProgram = activeProgram;
-          this.selectedProgram = activeProgram;
-          this.rgbRealtime.getProgram(activeProgram)
-            .subscribe(activeProgramInfo => {
-              this.code = activeProgramInfo.content;
-            });
-        }
+        this.rgbRealtime.getActiveProgram()
+          .subscribe(activeProgram => {
+            if (activeProgram) {
+              this.activeProgram = activeProgram;
+
+              this.selectProgram(programName || activeProgram || programs[0]);
+            }
+          });
       });
   }
 
   selectProgram(newProgram) {
     this.rgbRealtime.getProgram(newProgram)
       .subscribe(info => {
-        console.log(info);
         this.code = info.content;
       });
 
@@ -68,11 +64,7 @@ export class DynamicLightComponent implements OnInit {
 
   createProgram(name) {
     this.rgbRealtime.createProgram(name).subscribe(info => {
-      this.ngOnInit();
-
-      console.log('creating program', info);
-      this.selectedProgram = info.name;
-      this.code = info.content;
+      this.refreshAndSelect(info.name);
     });
 
     this.newName = '';
@@ -85,10 +77,7 @@ export class DynamicLightComponent implements OnInit {
           this.runProgram(this.selectedProgram);
         }
 
-        this.ngOnInit();
-
-        console.log(this.updateName);
-        this.selectedProgram = this.updateName;
+        this.refreshAndSelect(info.name);
       });
   }
 
@@ -96,7 +85,7 @@ export class DynamicLightComponent implements OnInit {
     this.rgbRealtime.deleteProgram(name)
       .subscribe(() => {
         this.deleteName = '';
-        this.ngOnInit();
+        this.refreshAndSelect();
       });
   }
 
