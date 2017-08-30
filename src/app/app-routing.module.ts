@@ -14,6 +14,11 @@ const routes: Routes = [
     component: LightComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'static',
+        pathMatch: 'full'
+      },
+      {
         path: 'static',
         component: StaticLightComponent
       },
