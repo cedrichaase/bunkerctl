@@ -69,9 +69,9 @@ div.color-picker {
 .nav-link {
   color: @grey-super-extra-light;
   transition: color 0.3s ease-in-out;
+  border: transparent 1px solid;
 
   &:hover:not(.active) {
-    border: transparent 1px solid !important;
     color: @color-primary-light;
   }
 
@@ -84,6 +84,14 @@ div.color-picker {
 
 .nav-tabs > li.nav-item > a.nav-link {
   border-radius: 5px 5px 0 0;
+
+  &:hover {
+    border: transparent 1px solid;
+  }
+
+  &.active {
+    border: @grey-super-extra-light 1px solid;
+  }
 }
 
 @color-widget: @grey-medium;
@@ -138,13 +146,18 @@ input {
   }
 }
 
+.navbar.navbar-dark {
+  background: @grey-dark;
+}
+
 .navbar-nav > li.nav-item > .nav-link.active {
   background: rgba(0, 0, 0, 0) !important;
-  border: none !important;
+  border: transparent 1px solid !important;
+  outline: none !important;
 }
 
 .list-group-item {
-  background: @grey-light;
+  background: @grey-light !important;
 }
 
 @card-bg: fade(@grey-dark, 50%);

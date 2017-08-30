@@ -66,9 +66,9 @@ div.color-picker {
 .nav-link {
   color: #c4c4c4;
   transition: color 0.3s ease-in-out;
+  border: transparent 1px solid;
 }
 .nav-link:hover:not(.active) {
-  border: transparent 1px solid !important;
   color: #ffdb4d;
 }
 .nav-link.active {
@@ -78,6 +78,12 @@ div.color-picker {
 }
 .nav-tabs > li.nav-item > a.nav-link {
   border-radius: 5px 5px 0 0;
+}
+.nav-tabs > li.nav-item > a.nav-link:hover {
+  border: transparent 1px solid;
+}
+.nav-tabs > li.nav-item > a.nav-link.active {
+  border: #c4c4c4 1px solid;
 }
 #accordion > .card {
   border: 0 !important;
@@ -114,12 +120,16 @@ input {
 .color-control-child:not(:last-child) input {
   border-bottom: #454545 1px solid !important;
 }
+.navbar.navbar-dark {
+  background: #2b2b2b;
+}
 .navbar-nav > li.nav-item > .nav-link.active {
   background: rgba(0, 0, 0, 0) !important;
-  border: none !important;
+  border: transparent 1px solid !important;
+  outline: none !important;
 }
 .list-group-item {
-  background: #6b6b6b;
+  background: #6b6b6b !important;
 }
 .card {
   background: rgba(43, 43, 43, 0.5);
