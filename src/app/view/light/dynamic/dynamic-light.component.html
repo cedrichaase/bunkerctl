@@ -10,10 +10,13 @@
               [ngClass]="{'selected': (program === selectedProgram)}"
               (click)="selectProgram(program)">
 
-            <div class="p-2">{{ program }}</div>
-            <div class="ml-auto p-2">
-              <i class="fa float-right spin-slow"
-                 [ngClass]="{'fa-circle-o-notch': (program === activeProgram)}"></i>
+
+            <div class="d-flex justify-content-start">
+              <div class="p-2">{{ program }}</div>
+              <div class="ml-auto p-2" style="padding-top: 1.2ex !important;">
+                <i class="fa spin-slow"
+                   [ngClass]="{'fa-circle-o-notch': (program === activeProgram)}"></i>
+              </div>
             </div>
 
           </li>
