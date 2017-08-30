@@ -6,14 +6,15 @@
       <div class="card-block">
         <ul class="list-group list-group-flush">
           <li *ngFor="let program of programs"
+
               class="list-group-item"
               [ngClass]="{'selected': (program === selectedProgram)}"
               (click)="selectProgram(program)">
 
 
-            <div class="d-flex justify-content-start">
+            <div class="d-flex justify-content-start align-items-center" style="height: 3rem;">
               <div class="p-2">{{ program }}</div>
-              <div class="ml-auto p-2" style="padding-top: 1.2ex !important;">
+              <div class="ml-auto p-2">
                 <i class="fa spin-slow"
                    [ngClass]="{'fa-circle-o-notch': (program === activeProgram)}"></i>
               </div>
