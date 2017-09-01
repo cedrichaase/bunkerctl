@@ -1,21 +1,15 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top">
-  <a class="navbar-brand">
-    <img src="/assets/img/nuclear.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-    bunker<span style="color: #666; font-weight: bold;">ctl</span>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="wrapper">
+  <nav class="navbar">
+    <a class="navbar-brand">
+      <img src="/assets/img/nuclear.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      bunker<span style="color: #666; font-weight: bold;">ctl</span>
+    </a>
+    <div class="nav-links">
+      <a routerLink="light/static" routerLinkActive="active">static</a>
+      <a routerLink="light/dynamic" routerLinkActive="active">dynamic</a>
+      <a routerLink="light/tradfri" routerLinkActive="active">tradfri</a>
+    </div>
+  </nav>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a routerLink="light/static" routerLinkActive="active" class="nav-link">static</a></li>
-      <li class="nav-item"><a routerLink="light/dynamic" routerLinkActive="active" class="nav-link">dynamic</a></li>
-      <li class="nav-item"><a routerLink="light/tradfri" routerLinkActive="active" class="nav-link">tradfri</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container-fluid">
   <router-outlet></router-outlet>
 </div><!-- /.container -->

@@ -1,18 +1,21 @@
+<div class="content">
+  <div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card">
+      <div class="card-header">
 
-<div class="card">
-  <input class="form-control color-control-global"
-         readonly="readonly"
-         id="master"
-         [cpAlphaChannel]="'disabled'"
-         [(colorPicker)]="masterColor"
-         [style.background]="masterColor"
-         [value]="'Master'"
-         (colorPickerChange)="broadcastColor(masterColor)"/>
-</div>
+        <input class="form-control color-control-global"
+               readonly="readonly"
+               id="master"
+               [cpAlphaChannel]="'disabled'"
+               [(colorPicker)]="masterColor"
+               [style.background]="masterColor"
+               [value]="'Master'"
+               (colorPickerChange)="broadcastColor(masterColor)"/>
+      </div>
+    </div>
 
-<div id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="card" *ngFor="let device of devices">
-    <div class="card-header" role="tab" id="heading{{ device.id }}">
+    <div class="card" *ngFor="let device of devices">
+      <div class="card-header" role="tab" id="heading{{ device.id }}">
 
         <div class="form-group" style="width: 100%; margin-bottom: 0; display: flex;">
 
@@ -36,35 +39,37 @@
 
         </div>
 
-    </div>
+      </div>
 
-    <div id="collapse{{ device.id }}" class="collapse" role="tabpanel">
-      <div class="card-block">
+      <div id="collapse{{ device.id }}" class="collapse" role="tabpanel">
+        <div class="card-block">
 
-        <div *ngFor="let control of device.controls" class="color-control-child">
-          <input class="form-control"
-                 readonly="readonly"
-                 id="{{ control.id }}"
-                 [cpAlphaChannel]="'disabled'"
-                 [(colorPicker)]="control.color"
-                 [style.background]="control.color"
-                 [value]="control.description"
-                 (colorPickerChange)="switchColor(control.id)"/>
+          <div *ngFor="let control of device.controls" class="color-control-child">
+            <input class="form-control"
+                   readonly="readonly"
+                   id="{{ control.id }}"
+                   [cpAlphaChannel]="'disabled'"
+                   [(colorPicker)]="control.color"
+                   [style.background]="control.color"
+                   [value]="control.description"
+                   (colorPickerChange)="switchColor(control.id)"/>
+          </div>
+
         </div>
-
       </div>
     </div>
   </div>
-</div>
 
-<hr/>
+  <hr/>
 
-<div class="row">
-  <div class="col-6">
-    <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOn();">on</button>
+  <div class="row">
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOn();">on</button>
+    </div>
+
+    <div class="col-6">
+      <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOff();">off</button>
+    </div>
   </div>
 
-  <div class="col-6">
-    <button style="margin: 0; width: 100%;" class="btn btn-secondary" (click)="allOff();">off</button>
-  </div>
 </div>

@@ -1,108 +1,126 @@
+<div class="content">
 
-<div class="row">
-  <div class="col-md-4 col-sm-12">
-    <div class="card">
-
-      <div class="card-block">
-        <ul class="list-group list-group-flush">
-          <li *ngFor="let program of programs"
-
-              class="list-group-item"
-              [ngClass]="{'selected': (program === selectedProgram)}"
-              (click)="selectProgram(program)">
-
-
-            <div class="d-flex justify-content-start align-items-center" style="height: 3rem;">
-              <div class="p-2">{{ program }}</div>
-              <div class="ml-auto p-2">
-                <i class="fa spin-slow"
-                   [ngClass]="{'fa-circle-o-notch': (program === activeProgram)}"></i>
-              </div>
-            </div>
-
-          </li>
-        </ul>
-
-
-      </div>
-
-      <!--<div class="card-footer">-->
-        <div class="row" style="margin: 0;">
-          <a class="btn btn-primary col-md-12 d-none d-md-block" style="width: 100%; outline: none;" (click)="openModal(createModalContent)">
-            <i class="fa fa-plus"></i>
-          </a>
-
-          <a class="btn btn-secondary col-6 d-block d-md-none" (click)="runProgram(selectedProgram)">
-            <i class="fa fa-play"></i>
-          </a>
-
-          <a class="btn btn-secondary col-6 d-block d-md-none" (click)="stopProgram()">
-            <i class="fa fa-stop"></i>
-          </a>
-        </div>
-      <!--</div>-->
-
+  <div class="sidebar">
+    <ul class="listview">
+      <li *ngFor="let program of programs"
+          [ngClass]="{'selected': (program === selectedProgram)}"
+          (click)="selectProgram(program)">
+        <div class="left">{{ program }}</div>
+        <div class="right"><i class="fa spin-slow"
+                [ngClass]="{'fa-circle-o-notch': (program === activeProgram)}"></i></div>
+      </li>
+    </ul>
+    <div class="bottom">
+      <a class="add-button btn btn-primary d-none d-md-block" style="width: 100%; outline: none;" (click)="openModal(createModalContent)">
+        <i class="fa fa-plus"></i>
+      </a>
+      <a class="btn btn-secondary d-block d-md-none" (click)="runProgram(selectedProgram)">
+        <i class="fa fa-play"></i>
+      </a>
+      <a class="btn btn-secondary d-block d-md-none" (click)="stopProgram()">
+        <i class="fa fa-stop"></i>
+      </a>
     </div>
   </div>
 
-  <!--editor-card-->
-  <div class="col-md-8 d-none d-md-block">
-    <div class="card">
-
-      <!--header-->
-      <div class="card-header">
-
-        <form class="form-inline">
-          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-            <div class="input-group-addon">Name</div>
-            <input type="text"
-                   class="form-control"
-                   id="inlineFormInputGroup"
-                   name="updateName"
-                   [(ngModel)]="updateName"
-                   value="{{ selectedProgram }}">
-          </div>
-
-          <div style="position: absolute; right: 1px;">
-
-            <a class="btn btn-secondary" (click)="runProgram(selectedProgram)">
-              <i class="fa fa-play"></i>
-            </a>
-
-            <a class="btn btn-secondary" (click)="stopProgram()">
-              <i class="fa fa-stop"></i>
-            </a>
-
-            <button class="btn btn-primary"
-                    (click)="saveProgram()"
-                    data-toggle="tooltip" data-placement="top" title="Save program">
-              <i class="fa fa-floppy-o"></i>
-            </button>
-
-            <button class="btn btn-danger"
-                    (click)="openModal(deleteModalContent)">
-              <i class="fa fa-trash-o"></i>
-            </button>
-          </div>
-        </form>
-
+  <div class="main">
+    <div class="toolbar">
+      <div class="left">
+        <div class="input-group">
+          <div class="input-group-addon">Name</div>
+          <input type="text"
+                 class="form-control"
+                 id="inlineFormInputGroup"
+                 name="updateName"
+                 [(ngModel)]="updateName"
+                 value="{{ selectedProgram }}">
+        </div>
       </div>
 
-      <!--content-->
-      <div class="card-block">
-        <div ace-editor
-             [(text)]="code"
-             [mode]="'python'"
-             [readOnly]="false"
-             [theme]="'idle_fingers'"
-             [autoUpdateContent]="true"></div>
+      <div class="right">
+        <a class="btn btn-secondary" (click)="runProgram(selectedProgram)">
+          <i class="fa fa-play"></i>
+        </a>
+
+        <a class="btn btn-secondary" (click)="stopProgram()">
+          <i class="fa fa-stop"></i>
+        </a>
+
+        <button class="btn btn-primary"
+                (click)="saveProgram()"
+                data-toggle="tooltip" data-placement="top" title="Save program">
+          <i class="fa fa-floppy-o"></i>
+        </button>
+
+        <button class="btn btn-danger"
+                (click)="openModal(deleteModalContent)">
+          <i class="fa fa-trash-o"></i>
+        </button>
       </div>
-
-      <!--TODO: add footer-->
-
     </div>
+
+    <div ace-editor
+         [(text)]="code"
+         [mode]="'python'"
+         [readOnly]="false"
+         [theme]="'idle_fingers'"
+         [autoUpdateContent]="true"></div>
+
   </div>
 </div>
+
+
+
+<!--<div class="dynamic-light-grid">-->
+  <!--<div>-->
+    <!--<div>-->
+
+      <!--<div>-->
+        <!--<ul>-->
+        <!--</ul>-->
+
+
+      <!--</div>-->
+
+      <!--&lt;!&ndash;<div class="card-footer">&ndash;&gt;-->
+      <!--<div>-->
+
+      <!--</div>-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash;editor-card&ndash;&gt;-->
+  <!--<div>-->
+    <!--<div>-->
+
+      <!--&lt;!&ndash;header&ndash;&gt;-->
+      <!--<div>-->
+
+        <!--<form>-->
+
+
+          <!--<div>-->
+
+
+          <!--</div>-->
+        <!--</form>-->
+
+      <!--</div>-->
+
+      <!--&lt;!&ndash;content&ndash;&gt;-->
+      <!--<div>-->
+
+        <!--editor here-->
+      <!--</div>-->
+
+      <!--&lt;!&ndash;TODO: add footer&ndash;&gt;-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
 
 <ng-template #createModalContent let-c="close" let-d="dismiss">
   <div class="modal-header">

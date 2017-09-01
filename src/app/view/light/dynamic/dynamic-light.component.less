@@ -26,10 +26,57 @@ a.btn.btn-secondary {
   color: black;
 }
 
+.left {
+  justify-self: start;
+}
+
+.right {
+  justify-self: end;
+}
+
+.bottom {
+  align-self: end;
+}
+
+.top {
+  align-self: start;
+}
+
 .ace_editor {
   font-size: 10pt;
-  min-height: @main-content-height - .35vh;
   width: 100%;
   overflow: auto;
   margin-right: 1em;
+}
+
+.sidebar {
+  display: grid;
+  grid-template-rows: fit-content(100%) 1fr;
+
+  border-right: 1px solid black;
+}
+
+.content {
+  @media @media-sm-down {
+    grid-template-columns: auto;
+  }
+
+  grid-template-columns: 1fr 3fr;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 2.5em fit-content(100%);
+
+  @media @media-sm-down {
+    display: none;
+  }
+}
+
+.main > .toolbar {
+  display: grid;
+  grid-gap: .5em;
+  grid-template-columns: repeat(2, auto);
+
+  border-bottom: 1px solid black;
 }

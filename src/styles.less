@@ -1,14 +1,15 @@
 @import 'colors';
 
 body {
-  background: @grey-medium;
-  color: white;
+  @background-color: @grey-medium;
+  background: @background-color;
+  .text-color(@background-color)
 }
 
 h1 {
   color: @color-primary;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
+  font-size: 150%;
 }
 
 @-webkit-keyframes spinnerRotate
@@ -47,10 +48,6 @@ h1 {
   -moz-animation-timing-function: linear;
 }
 
-.container-fluid {
-  margin-top: 4.5em;
-}
-
 div.color-picker {
   position: fixed !important;
   left: 50% !important;
@@ -60,38 +57,6 @@ div.color-picker {
 
 .color-picker > .arrow {
   display: none;
-}
-
-.nav-link {
-  color: @grey-super-extra-light;
-  transition: color 0.3s ease-in-out;
-  border: transparent 1px solid;
-
-  &:hover:not(.active) {
-    color: @color-primary-light;
-  }
-
-  &.active {
-    border-bottom: solid 1px @grey-medium !important;
-    background: @grey-medium !important;
-    color: @color-primary !important;
-  }
-}
-
-.nav-tabs {
-  margin-bottom: 2ex !important;
-}
-
-.nav-tabs > li.nav-item > a.nav-link {
-  border-radius: 5px 5px 0 0;
-
-  &:hover {
-    border: transparent 1px solid;
-  }
-
-  &.active {
-    border: @grey-super-extra-light 1px solid;
-  }
 }
 
 @color-widget: @grey-medium;
@@ -105,18 +70,6 @@ div.color-picker {
   .card-header {
     border: @color-widget solid 1px !important;
   }
-}
-
-.card-header {
-  padding: 0 !important;
-}
-
-.card-block {
-  border: @color-widget solid 1px !important;
-  border-top: none !important;
-  padding: 0 !important;
-  margin: 0 37px 0 0 !important;
-  background: @color-widget;
 }
 
 .collapse-button {
@@ -146,43 +99,7 @@ input {
   }
 }
 
-.navbar.navbar-dark {
-  background: @grey-dark;
-}
-
-.navbar-nav > li.nav-item > .nav-link.active {
-  background: rgba(0, 0, 0, 0) !important;
-  border: transparent 1px solid !important;
-  outline: none !important;
-}
-
-.list-group-item {
-  background: @grey-light !important;
-}
-
 @card-bg: fade(@grey-dark, 50%);
-
-.card {
-  //padding: 1ex !important;
-  background: @card-bg;
-  border-radius: 0 !important;
-
-
-  .card-header {
-    background: @card-bg !important;
-  }
-
-  .card-block {
-    //margin: 1px !important;
-    margin-right: 0 !important;
-  }
-
-
-  .card-footer {
-    background: @card-bg !important;
-  }
-}
-
 
 .input-group {
   border: @card-bg 1px solid;
@@ -202,17 +119,12 @@ input {
 }
 
 .btn {
-  //border: @grey-dark 1px solid;
-  border: @grey-medium 1px solid;
-  border-radius: 0 !important;
-
-  &:hover, &:focus {
-    outline: none !important;
-    border: @grey-medium 1px solid;
-  }
+  border-radius: 0;
+  border: none;
+  outline: none;
 
   &.btn-secondary {
-    color: white !important;
+    .text-color(@grey-extra-light) !important;
     background: @grey-extra-light !important;
     opacity: 1;
 
@@ -244,4 +156,85 @@ input {
 code {
   background: transparent;
   color: @color-primary;
+}
+
+a {
+  transition: color .3s ease-in-out;
+}
+
+a.active {
+  color: @color-primary !important;
+}
+
+.wrapper {
+  display:grid;
+  /*padding: 0;*/
+  /* grid-template-columns:1fr 1fr 1fr;*/
+  /*grid-template-columns:repeat(3, 1fr);*/
+  /*grid-gap:1em;*/
+  /* grid-auto-rows:100px; */
+  /*grid-auto-rows: minmax(100px, auto);*/
+  grid-template-rows: auto 0 1fr;
+  height: 100vh;
+}
+
+.wrapper > *:not(router-outlet) > .content {
+  display: grid;
+  height: 100%;
+  //padding: 1em;
+}
+
+nav.navbar {
+  padding: .5em 2em;
+  background: fade(black, 40%);
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1em;
+
+  border-bottom: 1px solid black;
+
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+
+  .nav-links > a {
+    margin: 0 .2em;
+
+    text-decoration: none;
+    color: @grey-extra-light;
+
+    &:hover {
+      color: @color-primary-light;
+    }
+  }
+}
+
+.listview {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  //border-top: 1px solid black;
+  border-bottom: 1px solid black;
+
+  overflow-y: auto;
+
+  & > li {
+    border-top: 1px solid black;
+    padding: 1em;
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    transition: border-right-color .1s ease-in-out;
+    border-right: 1px solid transparent;
+
+    &.selected {
+      background: fade(white, 20%);
+      border-right: 1px solid @color-primary;
+    }
+
+    &:nth-child(1) {
+      border-top: none;
+    }
+  }
 }

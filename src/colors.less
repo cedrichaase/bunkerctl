@@ -1,3 +1,26 @@
+// media queries (taken from twitter bootstrap)
+
+// Extra small devices (portrait phones, less than 576px)
+@media-xs: ~"(max-width: 575px)";
+
+// Small devices (landscape phones, 576px and up)
+@media-sm: ~"(min-width: 576px) and (max-width: 767px)";
+@media-sm-up: ~"(min-width: 576px)";
+@media-sm-down: ~"(max-width: 767px)";
+
+// Medium devices (tablets, 768px and up)
+@media-md: ~"(min-width: 768px) and (max-width: 991px)";
+@media-md-up: ~"(min-width: 768px)";
+@media-md-down: ~"(max-width: 991px)";
+
+// Large devices (desktops, 992px and up)
+@media-lg: ~"(min-width: 992px) and (max-width: 1199px)";
+
+// Extra large devices (large desktops, 1200px and up)
+@media-xl: ~"(min-width: 1200px)";
+
+
+// colors
 @color-primary: #fc0;
 @color-palette-main: #454545;
 
@@ -9,3 +32,12 @@
 @grey-medium: @color-palette-main;
 @grey-dark: darken(@color-palette-main, 10%);
 @grey-extra-dark: darken(@color-palette-main, 15%);
+
+.text-color(@color) when (lightness(@color) > 70%) {
+  color: black;
+}
+
+.text-color(@color) when (lightness(@color) < 70%) {
+  color: white;
+}
+
