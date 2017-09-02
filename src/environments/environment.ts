@@ -5,6 +5,7 @@ export const environment = {
   endpoints: {
     rgb: `http://${host}:3000`,
     rgbRealtime: `http://${host}:5001`,
-    tradfri: `http://raspberrypi:8002`
+    tradfri: `http://raspberrypi:8002`,
+    piweather: 'http://localhost:5000'
   }
 };

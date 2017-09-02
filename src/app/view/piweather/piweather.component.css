@@ -1,0 +1,12 @@
+.content {
+  padding-top: 3em;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+ngx-charts-line-chart {
+  fill: #c4c4c4;
+}
+iframe > html > body {
+  background: transparent !important;
+}

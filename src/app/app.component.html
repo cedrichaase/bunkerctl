@@ -5,10 +5,10 @@
       bunker<span style="color: #666; font-weight: bold;">ctl</span>
     </a>
     <div class="nav-links">
-      <a routerLink="light/static" routerLinkActive="active">static</a>
-      <a routerLink="light/dynamic" routerLinkActive="active">dynamic</a>
-      <a routerLink="light/tradfri" routerLinkActive="active">tradfri</a>
-      <a routerLink="piweather"     routerLinkActive="active">piweather</a>
+      <a routerLink="light/static" routerLinkActive="active" *ngIf="endpoints.rgb">static</a>
+      <a routerLink="light/dynamic" routerLinkActive="active" *ngIf="endpoints.rgbRealtime">dynamic</a>
+      <a routerLink="light/tradfri" routerLinkActive="active" *ngIf="endpoints.tradfri">tradfri</a>
+      <a routerLink="piweather"     routerLinkActive="active" *ngIf="endpoints.piweather">piweather</a>
     </div>
   </nav>
 

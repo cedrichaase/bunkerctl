@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -11,12 +11,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {RgbService} from './service/rgb/rgb.service';
 import { PiweatherComponent } from './view/piweather/piweather.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AceEditorDirective, AceEditorComponent, AceEditorModule } from 'ng2-ace-editor';
 import 'brace';
 import {RgbRealtimeService} from './service/rgb-realtime/rgb-realtime.service';
 import {TradfriService} from './service/tradfri/tradfri.service';
 import { TradfriComponent } from './view/light/tradfri/tradfri.component';
 import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.component';
+import {SafePipe} from './pipe/safe.pipe';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.compon
     StaticLightComponent,
     PiweatherComponent,
     TradfriComponent,
-    DynamicLightComponent
+    DynamicLightComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.compon
     AppRoutingModule,
     NgbModule.forRoot(),
     ColorPickerModule,
-    AceEditorModule
+    AceEditorModule,
+    NgxChartsModule
   ],
   providers: [
     RgbService,
