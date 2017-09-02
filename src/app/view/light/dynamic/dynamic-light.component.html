@@ -2,7 +2,7 @@
 
   <div class="sidebar">
     <ul class="listview">
-      <li *ngFor="let program of programs"
+      <li *ngFor="let program of programs | sort"
           [ngClass]="{'selected': (program === selectedProgram)}"
           (click)="selectProgram(program)">
         <div class="left">{{ program }}</div>

@@ -19,6 +19,7 @@ import {TradfriService} from './service/tradfri/tradfri.service';
 import { TradfriComponent } from './view/light/tradfri/tradfri.component';
 import { DynamicLightComponent } from './view/light/dynamic/dynamic-light.component';
 import {SafePipe} from './pipe/safe.pipe';
+import {ArraySortPipe} from './pipe/sort.pipe';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {SafePipe} from './pipe/safe.pipe';
     PiweatherComponent,
     TradfriComponent,
     DynamicLightComponent,
-    SafePipe
+    SafePipe,
+    ArraySortPipe
   ],
   imports: [
     BrowserModule,
