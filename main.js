@@ -8,9 +8,9 @@ app.on('ready', function () {
   // Initialize the window to our specified dimensions
   win = new BrowserWindow({
     width: 1000, height: 600,
-    transparent: true,
-    frame: false
-    // titlebarStyle: 'hidden'
+    minWidth: 800, minHeight: 600
+    // frame: false
+    // titleBarStyle: 'hidden'
   });
 
   // Specify entry point
