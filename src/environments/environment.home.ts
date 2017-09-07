@@ -9,7 +9,7 @@ export const environment = {
   production: true,
   endpoints: {
     rgb: `http://${host}:3000`,
-    rgbRealtime: `http://${host}:5000`,
+    rgbRealtime: `http://${host}:5001`,
     tradfri: `http://${host}:8002`,
     piweather: undefined
   }
